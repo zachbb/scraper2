@@ -7,15 +7,14 @@ import simplejson
 import urllib2
 
 
-QUERY = 'aras11 OR aras OR president'
-GEOINFO = '53.26521293124656,-9.063720703125,257km'
+QUERY = '#prolife'
 RESULTS_PER_PAGE = '100'
 LANGUAGE = 'en'
 NUM_PAGES = 15 
 
 for page in range(1, NUM_PAGES+1):
-    base_url = 'http://search.twitter.com/search.json?q=%s&geocode=%s&rpp=%s&lang=%s&page=%s' \
-         % (urllib2.quote(QUERY), urllib2.quote(GEOINFO), RESULTS_PER_PAGE, LANGUAGE, page)
+    base_url = 'http://search.twitter.com/search.json?q=%s&rpp=%s&lang=%s&page=%s' \
+         % (urllib2.quote(QUERY), RESULTS_PER_PAGE, LANGUAGE, page)
     try:
         results_json = simplejson.loads(scraperwiki.scrape(base_url))
         for result in results_json['results']:
